@@ -1,0 +1,8 @@
+* {
+  font-family: Arial, sans-serif;
+  max-width: 100%;
+  overflow: auto;
+}
+.text-center {
+  text-align: center;
+}
