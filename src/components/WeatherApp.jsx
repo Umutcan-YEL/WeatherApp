@@ -122,7 +122,7 @@ const WeatherApp = () => {
           <Row>
             <Col>
               <TextField
-                id="outlined-basic"
+                id="filled"
                 label={ctn}
                 variant="filled"
                 onChange={(e) => handleSearch(e.target.value)}
@@ -135,7 +135,7 @@ const WeatherApp = () => {
 
             <Col md={9}>
               <h2 className="text-center">
-                {cw} <p style={{ color: "red" }}>{weatherData.city.name}</p>{" "}
+                {cw} <p style={{ color: "#ffd700" }}>{weatherData.city.name}</p>{" "}
               </h2>
               <Table
                 striped
