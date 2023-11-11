@@ -1,5 +1,6 @@
 {
   "name": "weatherapp",
+  "homepage": "https://umutcan-yel.github.io/WeatherApp/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
