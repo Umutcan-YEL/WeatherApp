@@ -20,9 +20,7 @@ const WeatherApp = () => {
   const [lon, setLon] = useState();
   const [city, setCity] = useState();
   const [number, setNumber] = useState(5);
-  const [lang, setLang] = useState(
-    !localStorage.getItem("language") ? "tr" : localStorage.getItem("language")
-  );
+  const [lang, setLang] = useState(localStorage.getItem("language"));
   if (lang === undefined) {
     localStorage.setItem("language", "tr");
     setLang("tr");
@@ -116,6 +114,10 @@ const WeatherApp = () => {
     getWeatherData(city, lat, lon, lang).then((response) =>
       setWeatherData(response)
     );
+    if (lang === undefined || null || "") {
+      localStorage.setItem("language", "tr");
+      setLang("tr");
+    }
   }, [city, lat, lon, lang]);
 
   if (!weatherData) {
