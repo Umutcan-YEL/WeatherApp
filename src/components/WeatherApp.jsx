@@ -21,7 +21,9 @@ const WeatherApp = () => {
   const [lon, setLon] = useState();
   const [city, setCity] = useState();
   const [number, setNumber] = useState(5);
-  const [lang, setLang] = useState(language);
+  const [lang, setLang] = useState(
+    language === undefined || null || "" ? "tr" : language
+  );
   const changeDaylang = (day) => {
     if (lang === "tr") {
       switch (day) {
