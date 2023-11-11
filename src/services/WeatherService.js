@@ -11,8 +11,6 @@ export const getWeatherData = async (city, lat, lon, language) => {
     );
     return response.data;
   } catch (error) {
-    throw new Error(
-      "Veriler Getirilirken hata oluştu. Lütfen Verilerinizi Kontrol edin"
-    );
+    console.log("Veriler Getirilirken Hata Oluştu ", error);
   }
 };
