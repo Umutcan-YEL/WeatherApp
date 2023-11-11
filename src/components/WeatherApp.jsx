@@ -14,7 +14,6 @@ import FormHelperText from "@mui/material/FormHelperText";
 import Moment from "moment";
 
 const WeatherApp = () => {
-  let language = localStorage.getItem("language");
   const [weatherData, setWeatherData] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [lat, setLat] = useState();
@@ -82,7 +81,6 @@ const WeatherApp = () => {
     tablenum = "number of rows to call";
   }
   const changeLang = (lang) => {
-    localStorage.setItem("language", lang);
     setLang(lang);
   };
 
@@ -115,11 +113,7 @@ const WeatherApp = () => {
     getWeatherData(city, lat, lon, lang).then((response) =>
       setWeatherData(response)
     );
-    if (language !== "tr" || "en") {
-      localStorage.setItem("language", lang);
-      setLang("tr");
-    }
-  }, [city, lat, lon, lang, language]);
+  }, [city, lat, lon, lang]);
 
   if (!weatherData) {
     return <LocationModal />;
