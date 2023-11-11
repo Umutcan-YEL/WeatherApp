@@ -14,17 +14,14 @@ import FormHelperText from "@mui/material/FormHelperText";
 import Moment from "moment";
 
 const WeatherApp = () => {
+  let language = localStorage.getItem("language");
   const [weatherData, setWeatherData] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [lat, setLat] = useState();
   const [lon, setLon] = useState();
   const [city, setCity] = useState();
   const [number, setNumber] = useState(5);
-  const [lang, setLang] = useState(localStorage.getItem("language"));
-  if (lang === undefined) {
-    localStorage.setItem("language", "tr");
-    setLang("tr");
-  }
+  const [lang, setLang] = useState(language);
   const changeDaylang = (day) => {
     if (lang === "tr") {
       switch (day) {
@@ -61,6 +58,7 @@ const WeatherApp = () => {
   let humidity = "";
   let wind = "";
   let ctn = "";
+  let tablenum = "";
   if (lang === "tr") {
     cw = "Güncel Hava durumu";
     hour = "Saat";
@@ -70,6 +68,7 @@ const WeatherApp = () => {
     humidity = "Nem";
     wind = "Rüzgar";
     ctn = "Şehir";
+    tablenum = "Getirilecek Saat Sayısı";
   } else if (lang === "en") {
     cw = "Current Weather";
     hour = "Hour";
@@ -79,6 +78,7 @@ const WeatherApp = () => {
     humidity = "humidity";
     wind = "Wind";
     ctn = "City";
+    tablenum = "number of rows to call";
   }
   const changeLang = (lang) => {
     localStorage.setItem("language", lang);
@@ -230,7 +230,7 @@ const WeatherApp = () => {
               <MenuItem value={50}>50</MenuItem>
             </Select>
             <FormHelperText sx={{ ml: 6, minWidth: 120 }}>
-              Getirelecek Saat Sayısı
+              {tablenum}
             </FormHelperText>
           </Col>
         </Row>
