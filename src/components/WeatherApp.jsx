@@ -21,9 +21,11 @@ const WeatherApp = () => {
   const [lon, setLon] = useState();
   const [city, setCity] = useState();
   const [number, setNumber] = useState(5);
-  const [lang, setLang] = useState(
-    language === undefined || null || "" ? "tr" : language
-  );
+  const [lang, setLang] = useState(language);
+  if (language !== "tr" || "en") {
+    setLang("tr");
+  }
+
   const changeDaylang = (day) => {
     if (lang === "tr") {
       switch (day) {
@@ -116,11 +118,11 @@ const WeatherApp = () => {
     getWeatherData(city, lat, lon, lang).then((response) =>
       setWeatherData(response)
     );
-    if (lang === undefined || null || "") {
-      localStorage.setItem("language", "tr");
+    if (language !== "tr" || "en") {
+      localStorage.setItem("language", lang);
       setLang("tr");
     }
-  }, [city, lat, lon, lang]);
+  }, [city, lat, lon, lang, language]);
 
   if (!weatherData) {
     return <LocationModal />;
