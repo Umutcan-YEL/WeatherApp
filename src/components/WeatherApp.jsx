@@ -20,7 +20,7 @@ const WeatherApp = () => {
   const [lon, setLon] = useState();
   const [city, setCity] = useState();
   const [number, setNumber] = useState(5);
-  const [lang, setLang] = useState("tr");
+  const [lang, setLang] = useState(localStorage.getItem("language"));
 
   const changeDaylang = (day) => {
     if (lang === "tr") {
@@ -82,6 +82,7 @@ const WeatherApp = () => {
   }
   const changeLang = (lang) => {
     setLang(lang);
+    localStorage.setItem("language", lang);
   };
 
   const handleEnter = (event) => {
@@ -113,6 +114,11 @@ const WeatherApp = () => {
     getWeatherData(city, lat, lon, lang).then((response) =>
       setWeatherData(response)
     );
+
+    if (lang == null || undefined || "") {
+      setLang("tr");
+      localStorage.setItem("language", "tr");
+    }
   }, [city, lat, lon, lang]);
 
   if (!weatherData) {
