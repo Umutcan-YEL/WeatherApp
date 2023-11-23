@@ -1,0 +1,11 @@
+{
+  "Current-Weather": "Güncel Hava Durumu",
+  "Hour": "Saat",
+  "Description": "Açıklama",
+  "Temperature": "Sıcaklık",
+  "Feels-Like": "Hissedilen",
+  "Humidity": "Nem",
+  "Wind": "Rüzgar",
+  "City": "Şehir",
+  "Table-Num": "Getirilecek Satır Sayısı"
+}

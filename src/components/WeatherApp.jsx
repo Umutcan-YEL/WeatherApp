@@ -12,6 +12,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import Moment from "moment";
+import { useTranslation } from "react-i18next";
 
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -21,9 +22,10 @@ const WeatherApp = () => {
   const [city, setCity] = useState();
   const [number, setNumber] = useState(5);
   const [lang, setLang] = useState(localStorage.getItem("language"));
+  const { t, i18n } = useTranslation();
 
   const changeDaylang = (day) => {
-    if (lang === "tr") {
+    if (i18n.language === "tr") {
       switch (day) {
         case "Monday":
           return "Pazartesi";
@@ -42,7 +44,7 @@ const WeatherApp = () => {
         default:
           return day;
       }
-    } else {
+    } else if (i18n.language === "en") {
       return day;
     }
   };
@@ -50,37 +52,9 @@ const WeatherApp = () => {
   const handleSearch = (event) => {
     setSearchQuery(event);
   };
-  let cw = "";
-  let hour = "";
-  let description = "";
-  let temp = "";
-  let feels = "";
-  let humidity = "";
-  let wind = "";
-  let ctn = "";
-  let tablenum = "";
-  if (lang === "tr") {
-    cw = "Güncel Hava durumu";
-    hour = "Saat";
-    description = "Açıklama";
-    temp = "Sıcaklık";
-    feels = "Hissedilen";
-    humidity = "Nem";
-    wind = "Rüzgar";
-    ctn = "Şehir";
-    tablenum = "Getirilecek Saat Sayısı";
-  } else if (lang === "en") {
-    cw = "Current Weather";
-    hour = "Hour";
-    description = "Weather";
-    temp = "Temperature";
-    feels = "Feels Like";
-    humidity = "humidity";
-    wind = "Wind";
-    ctn = "City";
-    tablenum = "number of rows to call";
-  }
-  const changeLang = (lang) => {
+  const changeLang = async (lang) => {
+    await i18n.changeLanguage(lang);
+
     setLang(lang);
     localStorage.setItem("language", lang);
   };
@@ -133,7 +107,7 @@ const WeatherApp = () => {
           <Col>
             <TextField
               id="filled"
-              label={ctn}
+              label={t("City")}
               variant="filled"
               onChange={(e) => handleSearch(e.target.value)}
               onKeyDown={handleEnter}
@@ -145,7 +119,8 @@ const WeatherApp = () => {
 
           <Col md={9}>
             <h2 className="text-center">
-              {cw} <p style={{ color: "#ffd700" }}>{weatherData.city.name}</p>{" "}
+              {t("Current-Weather")}{" "}
+              <p style={{ color: "#ffd700" }}>{weatherData.city.name}</p>{" "}
             </h2>
             <Table
               striped
@@ -157,13 +132,13 @@ const WeatherApp = () => {
             >
               <thead>
                 <tr>
-                  <th>{hour}</th>
-                  <th>{description}</th>
+                  <th>{t("Hour")}</th>
+                  <th>{t("Description")}</th>
                   <th></th>
-                  <th>{temp}</th>
-                  <th>{feels}</th>
-                  <th>{humidity}</th>
-                  <th>{wind}</th>
+                  <th>{t("Temperature")}</th>
+                  <th>{t("Feels-Like")}</th>
+                  <th>{t("Humidity")}</th>
+                  <th>{t("Wind")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -231,12 +206,11 @@ const WeatherApp = () => {
               <MenuItem value={50}>50</MenuItem>
             </Select>
             <FormHelperText sx={{ ml: 6, minWidth: 120 }}>
-              {tablenum}
+              {t("Table-Num")}
             </FormHelperText>
           </Col>
         </Row>
       </Container>
-
       <Container fluid>
         <Table
           striped
@@ -248,13 +222,13 @@ const WeatherApp = () => {
         >
           <thead>
             <tr>
-              <th>{hour}</th>
-              <th>{description}</th>
+              <th>{t("Hour")}</th>
+              <th>{t("Description")}</th>
               <th></th>
-              <th>{temp}</th>
-              <th>{feels}</th>
-              <th>{humidity}</th>
-              <th>{wind}</th>
+              <th>{t("Temperature")}</th>
+              <th>{t("Feels-Like")}</th>
+              <th>{t("Humidity")}</th>
+              <th>{t("Wind")}</th>
             </tr>
           </thead>
           <tbody>

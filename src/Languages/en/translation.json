@@ -1,0 +1,11 @@
+{
+  "Current-Weather": "Current Weather",
+  "Hour": "Hour",
+  "Description": "Description",
+  "Temperature": "Temperature",
+  "Feels-Like": "Feels Like",
+  "Humidity": "Humidity",
+  "Wind": "Wind",
+  "City": "City",
+  "Table-Num": "Number of rows to call"
+}

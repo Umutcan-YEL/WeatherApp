@@ -1,10 +1,13 @@
 import WeatherApp from "./components/WeatherApp";
+import { Suspense } from "react";
 
 function App() {
   return (
-    <div>
-      <WeatherApp />
-    </div>
+    <Suspense fallback="loading">
+      <div>
+        <WeatherApp />
+      </div>
+    </Suspense>
   );
 }
 
