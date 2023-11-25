@@ -37,7 +37,6 @@ function TodayHiglightsComp({ data }) {
             </Col>{" "}
           </Row>
         </Col>
-        {console.log(data)}
         <Col className="border-box third-background m-2 ">
           <h5 className="text-grey"> {t("Humidity")} </h5> <br />
           <Row>
