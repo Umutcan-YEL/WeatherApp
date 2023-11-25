@@ -15,7 +15,7 @@ function Error() {
     <div>
       <h1 style={{ marginTop: "20rem" }} className="text-center text-white">
         {" "}
-        {t("alert")}{" "}
+        {t("alert")}
       </h1>
     </div>
   );

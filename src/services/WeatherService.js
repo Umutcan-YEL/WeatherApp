@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiKey = "a5a95c68cdaaa0819a9aa23f04236fa1";
+const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
 // export const getWeatherDataCords = async (sendingData) => {
 //   try {
