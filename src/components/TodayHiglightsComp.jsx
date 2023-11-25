@@ -19,7 +19,7 @@ function TodayHiglightsComp({ data }) {
       </Row>
       <br />
       <Row>
-        <Col className="border-box third-background m-2 hidden ">
+        <Col className="border-box third-background m-2 ">
           <h5 className="text-grey"> {t("Wind")} </h5>
           <br />
           <Row>

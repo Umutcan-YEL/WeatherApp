@@ -125,7 +125,7 @@ function Weather() {
             >
               <CurrentWeatherComp data={data} />
             </Col>
-            <Col className="border-box second-background text-white m-3 ">
+            <Col className="border-box second-background text-white m-3 hidden">
               <TodayHiglightsComp data={data} />
             </Col>
           </Row>
