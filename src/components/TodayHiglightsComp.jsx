@@ -3,12 +3,11 @@ import { useTranslation } from "react-i18next";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Moment from "moment";
 import { FaWind } from "react-icons/fa6";
 import { FaDroplet } from "react-icons/fa6";
 import { FaTemperatureFull } from "react-icons/fa6";
 function TodayHiglightsComp({ data }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Container fluid>
@@ -20,7 +19,7 @@ function TodayHiglightsComp({ data }) {
       </Row>
       <br />
       <Row>
-        <Col className="border-box third-background m-2 ">
+        <Col className="border-box third-background m-2 hidden ">
           <h5 className="text-grey"> {t("Wind")} </h5>
           <br />
           <Row>

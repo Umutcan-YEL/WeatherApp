@@ -90,7 +90,7 @@ function Weather() {
       <div className="background-color main text-black">
         <Container fluid className="mt-2 ">
           <Row>
-            <Col> </Col>
+            <Col className="hidden"> </Col>
             <Col>
               <TextField
                 className="searchbar"
@@ -118,14 +118,18 @@ function Weather() {
             </Col>
           </Row>
           <Row>
-            <Col md={2} className="border-box second-background text-white m-3">
+            <Col
+              md={2}
+              xs={10}
+              className="border-box second-background text-white m-3  "
+            >
               <CurrentWeatherComp data={data} />
             </Col>
-            <Col className="border-box second-background text-white m-3">
+            <Col className="border-box second-background text-white m-3 ">
               <TodayHiglightsComp data={data} />
             </Col>
           </Row>
-          <Row>
+          <Row className="hidden">
             <Col className="border-box second-background text-white m-3">
               {" "}
               <HourlyWeatherComp data={data} />{" "}
