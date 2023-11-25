@@ -1,8 +1,3 @@
-body {
-  background-color: #0093e9;
-  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -13,4 +8,45 @@ code {
 }
 .text-center {
   text-align: center;
+}
+html {
+  background-color: rgb(15, 26, 41);
+}
+.app-style {
+  background-color: rgb(15, 26, 41);
+}
+.second-background {
+  background-color: rgb(3, 57, 75);
+}
+
+.third-background {
+  background-color: rgb(15, 26, 41);
+}
+
+.text-white {
+  color: white;
+}
+
+.text-grey {
+  color: grey;
+}
+.text-black {
+  color: black;
+}
+.searchbar {
+  background-color: rgb(3, 57, 75);
+  border-radius: 20px;
+  color: white;
+}
+
+.border-box {
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.picture-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

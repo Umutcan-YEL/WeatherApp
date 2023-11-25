@@ -1,11 +1,11 @@
-import WeatherApp from "./components/WeatherApp";
+import Weather from "./Pages/Weather";
 import { Suspense } from "react";
 
 function App() {
   return (
     <Suspense fallback="loading">
-      <div>
-        <WeatherApp />
+      <div className="app-style">
+        <Weather />
       </div>
     </Suspense>
   );

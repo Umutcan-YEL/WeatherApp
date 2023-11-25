@@ -13,7 +13,6 @@ import MenuItem from "@mui/material/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText";
 import Moment from "moment";
 import { useTranslation } from "react-i18next";
-
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,11 +20,11 @@ const WeatherApp = () => {
   const [lon, setLon] = useState();
   const [city, setCity] = useState();
   const [number, setNumber] = useState(5);
-  const [lang, setLang] = useState(localStorage.getItem("language"));
   const { t, i18n } = useTranslation();
+  let lang = i18n.language;
 
   const changeDaylang = (day) => {
-    if (i18n.language === "tr") {
+    if (lang === "tr") {
       switch (day) {
         case "Monday":
           return "Pazartesi";
@@ -44,7 +43,7 @@ const WeatherApp = () => {
         default:
           return day;
       }
-    } else if (i18n.language === "en") {
+    } else if (lang === "en") {
       return day;
     }
   };
@@ -54,9 +53,6 @@ const WeatherApp = () => {
   };
   const changeLang = async (lang) => {
     await i18n.changeLanguage(lang);
-
-    setLang(lang);
-    localStorage.setItem("language", lang);
   };
 
   const handleEnter = (event) => {
@@ -88,11 +84,6 @@ const WeatherApp = () => {
     getWeatherData(city, lat, lon, lang).then((response) =>
       setWeatherData(response)
     );
-
-    if (lang == null || undefined || "") {
-      setLang("tr");
-      localStorage.setItem("language", "tr");
-    }
   }, [city, lat, lon, lang]);
 
   if (!weatherData) {
@@ -127,7 +118,7 @@ const WeatherApp = () => {
               bordered
               responsive
               size="sm"
-              className="text-center"
+              className="text-center table-style"
               // variant="dark"
             >
               <thead>
