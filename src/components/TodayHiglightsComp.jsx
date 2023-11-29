@@ -10,82 +10,156 @@ function TodayHiglightsComp({ data }) {
   const { t } = useTranslation();
 
   return (
-    <Container fluid>
-      <Row>
-        <Col>
-          {" "}
-          <h5> {t("Today-Highlight")} </h5>
-        </Col>
-      </Row>
-      <br />
-      <Row>
-        <Col className="border-box third-background m-2 ">
-          <h5 className="text-grey"> {t("Wind")} </h5>
-          <br />
-          <Row>
-            <Col md={4} className="text-center">
-              {" "}
-              <h3>
+    <div>
+      <Container fluid className="screen">
+        <Row>
+          <Col>
+            {" "}
+            <h5> {t("Today-Highlight")} </h5>
+          </Col>
+        </Row>
+        <br />
+        <Row>
+          <Col className="border-box third-background m-2 ">
+            <h5 className="text-grey"> {t("Wind")} </h5>
+            <br />
+            <Row>
+              <Col md={4} className="text-center">
                 {" "}
-                <FaWind />
-              </h3>{" "}
-            </Col>
-            <Col>
-              {" "}
-              <h3>{data.list[0].wind.speed} K/MH</h3>{" "}
-            </Col>{" "}
-          </Row>
-        </Col>
-        <Col className="border-box third-background m-2 ">
-          <h5 className="text-grey"> {t("Humidity")} </h5> <br />
-          <Row>
-            <Col md={4} className="text-center">
-              <h3>
+                <h3>
+                  {" "}
+                  <FaWind />
+                </h3>{" "}
+              </Col>
+              <Col>
                 {" "}
-                <FaDroplet />
-              </h3>
-            </Col>
+                <h3>{data.list[0].wind.speed} K/MH</h3>{" "}
+              </Col>{" "}
+            </Row>
+          </Col>
+          <Col className="border-box third-background m-2 ">
+            <h5 className="text-grey"> {t("Humidity")} </h5> <br />
+            <Row>
+              <Col md={4} className="text-center">
+                <h3>
+                  {" "}
+                  <FaDroplet />
+                </h3>
+              </Col>
 
-            <Col>
-              {" "}
-              <h3>{data.list[0].main.humidity} %</h3>{" "}
-            </Col>
-          </Row>
-        </Col>
-        <Col className="border-box third-background m-2 ">
-          <h5 className="text-grey"> {t("Pressure")} </h5> <br />
-          <Row>
-            <Col md={4} className="text-center">
-              <h3>
+              <Col>
                 {" "}
-                <FaWind />
-              </h3>
-            </Col>
+                <h3>{data.list[0].main.humidity} %</h3>{" "}
+              </Col>
+            </Row>
+          </Col>
+          <Col className="border-box third-background m-2 ">
+            <h5 className="text-grey"> {t("Pressure")} </h5> <br />
+            <Row>
+              <Col md={4} className="text-center">
+                <h3>
+                  {" "}
+                  <FaWind />
+                </h3>
+              </Col>
 
-            <Col>
-              {" "}
-              <h3>{data.list[0].main.pressure} hPa</h3>{" "}
-            </Col>
-          </Row>
-        </Col>
-        <Col className="border-box third-background m-2 ">
-          <h5 className="text-grey"> {t("Feels-Like")} </h5> <br />
-          <Row>
-            <Col md={4} className="text-center">
-              <h3>
+              <Col>
                 {" "}
-                <FaTemperatureFull />
-              </h3>
-            </Col>
+                <h3>{data.list[0].main.pressure} hPa</h3>{" "}
+              </Col>
+            </Row>
+          </Col>
+          <Col className="border-box third-background m-2 ">
+            <h5 className="text-grey"> {t("Feels-Like")} </h5> <br />
+            <Row>
+              <Col md={4} className="text-center">
+                <h3>
+                  {" "}
+                  <FaTemperatureFull />
+                </h3>
+              </Col>
 
-            <Col>
-              {" "}
-              <h3>{Math.round(data.list[0].main.feels_like)} °C</h3>{" "}
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+              <Col>
+                {" "}
+                <h3>{Math.round(data.list[0].main.feels_like)} °C</h3>{" "}
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+
+      <Container fluid className="mobile">
+        <Row>
+          <Col className="border-box third-background m-2 ">
+            <h5 className="text-grey"> {t("Wind")} </h5>
+            <br />
+            <Row>
+              <Col xs={12} className="text-center">
+                {" "}
+                <h3>
+                  {" "}
+                  <FaWind />
+                </h3>{" "}
+              </Col>
+              <Col className="text-center">
+                {" "}
+                <h3>{data.list[0].wind.speed} K/MH</h3>{" "}
+              </Col>{" "}
+            </Row>
+          </Col>
+          <Col className="border-box third-background m-2 ">
+            <h5 className="text-grey"> {t("Humidity")} </h5> <br />
+            <Row>
+              <Col xs={12} className="text-center">
+                <h3>
+                  {" "}
+                  <FaDroplet />
+                </h3>
+              </Col>
+
+              <Col className="text-center">
+                {" "}
+                <h3>{data.list[0].main.humidity} %</h3>{" "}
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="border-box third-background m-2 ">
+            <h5 className="text-grey"> {t("Pressure")} </h5> <br />
+            <Row>
+              <Col xs={12} className="text-center">
+                <h3>
+                  {" "}
+                  <FaWind />
+                </h3>
+              </Col>
+
+              <Col className="text-center">
+                {" "}
+                <h3>{data.list[0].main.pressure} hPa</h3>{" "}
+              </Col>
+            </Row>
+          </Col>
+          <Col className="border-box third-background m-2 ">
+            <h5 className="text-grey"> {t("Feels-Like")} </h5> <br />
+            <Row>
+              <Col xs={12} className="text-center">
+                <h3>
+                  {" "}
+                  <FaTemperatureFull />
+                </h3>
+              </Col>
+
+              <Col className="text-center">
+                {" "}
+                <h3>{Math.round(data.list[0].main.feels_like)} °C</h3>{" "}
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

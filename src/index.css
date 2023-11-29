@@ -6,6 +6,29 @@ code {
   font-family: Arial, sans-serif;
   overflow: auto;
 }
+
+@media only screen and (max-width: 768px) {
+  .mobile {
+    display: block;
+    visibility: visible;
+  }
+  .screen {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .screen {
+    display: block;
+    visibility: visible;
+  }
+  .mobile {
+    display: none;
+    visibility: hidden;
+  }
+}
+
 .text-center {
   text-align: center;
 }
@@ -49,11 +72,4 @@ html {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-@media only screen and (max-width: 600px) {
-  .hidden {
-    display: none;
-    visibility: hidden;
-  }
 }
