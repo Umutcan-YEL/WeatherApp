@@ -14,14 +14,20 @@ import CurrentWeatherComp from "../components/CurrentWeatherComp";
 import TodayHiglightsComp from "../components/TodayHiglightsComp";
 import HourlyWeatherComp from "../components/HourlyWeatherComp";
 import Error from "./Error";
+import Autocomplete from "@mui/material/Autocomplete";
+
 function Weather() {
   const [searchQuery, setSearchQuery] = useState("");
   const [trigger, setTrigger] = useState(false);
   const { t, i18n } = useTranslation();
   let lang = i18n.language;
 
-  const handleSearch = (event) => {
-    setSearchQuery(event);
+  const handleSearch = (value, event) => {
+    if (value === undefined) {
+      setSearchQuery(event);
+    } else {
+      setSearchQuery(value);
+    }
   };
   const changeLang = async (lang) => {
     await i18n.changeLanguage(lang);
@@ -81,6 +87,90 @@ function Weather() {
   // const loading = useSelector((state) => state.Cordsdata.loading);
   // const error = useSelector((state) => state.Cordsdata.error);
 
+  const weatherData = [
+    { label: "Adana" },
+    { label: "Adıyaman" },
+    { label: "Afyon" },
+    { label: "Ağrı" },
+    { label: "Amasya" },
+    { label: "Ankara" },
+    { label: "Antalya" },
+    { label: "Artvin" },
+    { label: "Aydın" },
+    { label: "Balıkesir" },
+    { label: "Bilecik" },
+    { label: "Bingöl" },
+    { label: "Bitlis" },
+    { label: "Bolu" },
+    { label: "Burdur" },
+    { label: "Bursa" },
+    { label: "Çanakkale" },
+    { label: "Çankırı" },
+    { label: "Çorum" },
+    { label: "Denizli" },
+    { label: "Diyarkabır" },
+    { label: "Edirne" },
+    { label: "Elazığ" },
+    { label: "Erzincan" },
+    { label: "Erzurum" },
+    { label: "Eskişehir" },
+    { label: "Gaziantep" },
+    { label: "Giresun" },
+    { label: "Gümüşhane" },
+    { label: "Hakkari" },
+    { label: "Hatay" },
+    { label: "Isparta" },
+    { label: "Mersin" },
+    { label: "İstanbul" },
+    { label: "İzmir" },
+    { label: "Kars" },
+    { label: "Kastamonu" },
+    { label: "Kayseri" },
+    { label: "Kırklareli" },
+    { label: "Kırşehir" },
+    { label: "Kocaeli" },
+    { label: "Konya" },
+    { label: "Kütahya" },
+    { label: "Malatya" },
+    { label: "Manisa" },
+    { label: "Kahramanmaraş" },
+    { label: "Mardin" },
+    { label: "Muğla" },
+    { label: "Muş" },
+    { label: "Nevşehir" },
+    { label: "Niğde" },
+    { label: "Ordu" },
+    { label: "Rize" },
+    { label: "Sakarya" },
+    { label: "Samsun" },
+    { label: "Siirt" },
+    { label: "Sinop" },
+    { label: "Sivas" },
+    { label: "Tekirdağ" },
+    { label: "Tokat" },
+    { label: "Trabzon" },
+    { label: "Tunceli" },
+    { label: "Şanlıurfa" },
+    { label: "Uşak" },
+    { label: "Van" },
+    { label: "Yozgat" },
+    { label: "Zonguldak" },
+    { label: "Aksaray" },
+    { label: "Bayburt" },
+    { label: "Karaman" },
+    { label: "Kırıkkale" },
+    { label: "Batman" },
+    { label: "Şırnak" },
+    { label: "Bartın" },
+    { label: "Ardahan" },
+    { label: "Iğdır" },
+    { label: "Yalova" },
+    { label: "Karabük" },
+    { label: "Kilis" },
+    { label: "Osmaniye" },
+    { label: "Düzce" },
+  ];
+
   if (data === true) {
     return <Error />;
   } else if (data.city === undefined) {
@@ -92,7 +182,7 @@ function Weather() {
           <Row>
             <Col className="screen"> </Col>
             <Col>
-              <TextField
+              {/* <TextField
                 className="searchbar"
                 id="filled-basic"
                 variant="filled"
@@ -101,6 +191,25 @@ function Weather() {
                 onKeyDown={handleEnter}
                 autoComplete="off"
                 fullWidth
+              /> */}
+              <Autocomplete
+                freeSolo
+                id="free-solo-2-demo"
+                disableClearable
+                options={weatherData.map((option) => option.label)}
+                onChange={(event, newValue) => handleSearch(newValue)}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    onKeyDown={handleEnter}
+                    label={t("City")}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    InputProps={{
+                      ...params.InputProps,
+                      type: "search",
+                    }}
+                  />
+                )}
               />
             </Col>
             <Col>
