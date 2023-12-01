@@ -15,6 +15,7 @@ import TodayHiglightsComp from "../components/TodayHiglightsComp";
 import HourlyWeatherComp from "../components/HourlyWeatherComp";
 import Error from "./Error";
 import Autocomplete from "@mui/material/Autocomplete";
+import cityData from "../CityData/tr.json";
 
 function Weather() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -87,89 +88,15 @@ function Weather() {
   // const loading = useSelector((state) => state.Cordsdata.loading);
   // const error = useSelector((state) => state.Cordsdata.error);
 
-  const weatherData = [
-    { label: "Adana" },
-    { label: "Adıyaman" },
-    { label: "Afyon" },
-    { label: "Ağrı" },
-    { label: "Amasya" },
-    { label: "Ankara" },
-    { label: "Antalya" },
-    { label: "Artvin" },
-    { label: "Aydın" },
-    { label: "Balıkesir" },
-    { label: "Bilecik" },
-    { label: "Bingöl" },
-    { label: "Bitlis" },
-    { label: "Bolu" },
-    { label: "Burdur" },
-    { label: "Bursa" },
-    { label: "Çanakkale" },
-    { label: "Çankırı" },
-    { label: "Çorum" },
-    { label: "Denizli" },
-    { label: "Diyarkabır" },
-    { label: "Edirne" },
-    { label: "Elazığ" },
-    { label: "Erzincan" },
-    { label: "Erzurum" },
-    { label: "Eskişehir" },
-    { label: "Gaziantep" },
-    { label: "Giresun" },
-    { label: "Gümüşhane" },
-    { label: "Hakkari" },
-    { label: "Hatay" },
-    { label: "Isparta" },
-    { label: "Mersin" },
-    { label: "İstanbul" },
-    { label: "İzmir" },
-    { label: "Kars" },
-    { label: "Kastamonu" },
-    { label: "Kayseri" },
-    { label: "Kırklareli" },
-    { label: "Kırşehir" },
-    { label: "Kocaeli" },
-    { label: "Konya" },
-    { label: "Kütahya" },
-    { label: "Malatya" },
-    { label: "Manisa" },
-    { label: "Kahramanmaraş" },
-    { label: "Mardin" },
-    { label: "Muğla" },
-    { label: "Muş" },
-    { label: "Nevşehir" },
-    { label: "Niğde" },
-    { label: "Ordu" },
-    { label: "Rize" },
-    { label: "Sakarya" },
-    { label: "Samsun" },
-    { label: "Siirt" },
-    { label: "Sinop" },
-    { label: "Sivas" },
-    { label: "Tekirdağ" },
-    { label: "Tokat" },
-    { label: "Trabzon" },
-    { label: "Tunceli" },
-    { label: "Şanlıurfa" },
-    { label: "Uşak" },
-    { label: "Van" },
-    { label: "Yozgat" },
-    { label: "Zonguldak" },
-    { label: "Aksaray" },
-    { label: "Bayburt" },
-    { label: "Karaman" },
-    { label: "Kırıkkale" },
-    { label: "Batman" },
-    { label: "Şırnak" },
-    { label: "Bartın" },
-    { label: "Ardahan" },
-    { label: "Iğdır" },
-    { label: "Yalova" },
-    { label: "Karabük" },
-    { label: "Kilis" },
-    { label: "Osmaniye" },
-    { label: "Düzce" },
+  const lastData = [
+    cityData.map((data) => {
+      return data.label;
+    }),
   ];
+
+  const newData = lastData[0].filter((value, index) => {
+    return lastData[0].indexOf(value) === index;
+  });
 
   if (data === true) {
     return <Error />;
@@ -182,24 +109,18 @@ function Weather() {
           <Row>
             <Col className="screen"> </Col>
             <Col>
-              {/* <TextField
-                className="searchbar"
-                id="filled-basic"
-                variant="filled"
-                label={t("City")}
-                onChange={(e) => handleSearch(e.target.value)}
-                onKeyDown={handleEnter}
-                autoComplete="off"
-                fullWidth
-              /> */}
               <Autocomplete
                 freeSolo
                 id="free-solo-2-demo"
                 disableClearable
-                options={weatherData.map((option) => option.label)}
+                options={newData.map((data, index) => data)}
                 onChange={(event, newValue) => handleSearch(newValue)}
                 renderInput={(params) => (
                   <TextField
+                    fullWidth
+                    id="filled-basic"
+                    variant="filled"
+                    className="searchbar"
                     {...params}
                     onKeyDown={handleEnter}
                     label={t("City")}
