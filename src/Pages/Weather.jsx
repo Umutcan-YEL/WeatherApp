@@ -16,6 +16,7 @@ import HourlyWeatherComp from "../components/HourlyWeatherComp";
 import Error from "./Error";
 import Autocomplete from "@mui/material/Autocomplete";
 import cityData from "../CityData/tr.json";
+import WeeklyGraphcomp from "../components/WeeklyGraphcomp";
 
 function Weather() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -159,11 +160,15 @@ function Weather() {
               <TodayHiglightsComp data={data} />
             </Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col className="border-box second-background text-white m-3">
               {" "}
               <HourlyWeatherComp data={data} />{" "}
             </Col>
+          </Row> */}
+          <Row>
+            {" "}
+            <WeeklyGraphcomp data={data} />{" "}
           </Row>
         </Container>
       </div>
