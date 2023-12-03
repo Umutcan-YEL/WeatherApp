@@ -1,5 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+// eslint-disable-next-line no-unused-vars
 import { Chart as ChartJS } from "chart.js/auto";
 import Container from "react-bootstrap/Container";
 import Moment from "moment";
@@ -12,7 +13,6 @@ function WeeklyGraphcomp({ data }) {
   const de = list.map((data) => {
     return data;
   });
-
   const MondayData = de.filter(
     (item) => t(Moment(item.dt_txt.slice(0, 10)).format("dddd")) === t("Monday")
   );
@@ -117,7 +117,7 @@ function WeeklyGraphcomp({ data }) {
 
     datasets: [
       {
-        label: "Sıcaklık",
+        label: t("Temperature"),
         data: Monday[0].temp.map((item) => {
           return item;
         }),
@@ -134,7 +134,7 @@ function WeeklyGraphcomp({ data }) {
 
     datasets: [
       {
-        label: "Sıcaklık",
+        label: t("Temperature"),
         data: Tuesday[0].temp.map((item) => {
           return item;
         }),
@@ -151,7 +151,7 @@ function WeeklyGraphcomp({ data }) {
 
     datasets: [
       {
-        label: "Sıcaklık",
+        label: t("Temperature"),
         data: Wednesday[0].temp.map((item) => {
           return item;
         }),
@@ -169,7 +169,7 @@ function WeeklyGraphcomp({ data }) {
 
     datasets: [
       {
-        label: "Sıcaklık",
+        label: t("Temperature"),
         data: Thursday[0].temp.map((item) => {
           return item;
         }),
@@ -186,7 +186,7 @@ function WeeklyGraphcomp({ data }) {
 
     datasets: [
       {
-        label: "Sıcaklık",
+        label: t("Temperature"),
         data: Friday[0].temp.map((item) => {
           return item;
         }),
@@ -203,7 +203,7 @@ function WeeklyGraphcomp({ data }) {
 
     datasets: [
       {
-        label: "Sıcaklık",
+        label: t("Temperature"),
         data: Saturday[0].temp.map((item) => {
           return item;
         }),
@@ -220,7 +220,7 @@ function WeeklyGraphcomp({ data }) {
 
     datasets: [
       {
-        label: "Sıcaklık",
+        label: t("Temperature"),
         data: Sunday[0].temp.map((item) => {
           return item;
         }),
@@ -246,12 +246,12 @@ function WeeklyGraphcomp({ data }) {
         id="uncontrolled-tab-example"
         className="mb-3"
         fill
-        style={{ height: "3rem", color: "white" }}
+        style={{ minHeight: "3rem", color: "white" }}
       >
         <Tab
           eventKey={1}
           title={t("Monday")}
-          disabled={Monday[0].temp.length > 0 ? false : true}
+          disabled={Monday[0].temp.length > 1 ? false : true}
         >
           {" "}
           <Line
@@ -263,7 +263,7 @@ function WeeklyGraphcomp({ data }) {
         <Tab
           eventKey={2}
           title={t("Tuesday")}
-          disabled={Tuesday[0].temp.length > 0 ? false : true}
+          disabled={Tuesday[0].temp.length > 1 ? false : true}
         >
           <Line
             data={TuesdaygraphData}
@@ -274,7 +274,7 @@ function WeeklyGraphcomp({ data }) {
         <Tab
           eventKey={3}
           title={t("Wednesday")}
-          disabled={Wednesday[0].temp.length > 0 ? false : true}
+          disabled={Wednesday[0].temp.length > 1 ? false : true}
         >
           <Line
             data={WednesdaygraphData}
@@ -285,7 +285,7 @@ function WeeklyGraphcomp({ data }) {
         <Tab
           eventKey={4}
           title={t("Thursday")}
-          disabled={Thursday[0].temp.length > 0 ? false : true}
+          disabled={Thursday[0].temp.length > 1 ? false : true}
         >
           <Line
             data={ThursdaygraphData}
@@ -296,7 +296,7 @@ function WeeklyGraphcomp({ data }) {
         <Tab
           eventKey={5}
           title={t("Friday")}
-          disabled={Friday[0].temp.length > 0 ? false : true}
+          disabled={Friday[0].temp.length > 1 ? false : true}
         >
           <Line
             data={FridaygraphData}
@@ -307,7 +307,7 @@ function WeeklyGraphcomp({ data }) {
         <Tab
           eventKey={6}
           title={t("Saturday")}
-          disabled={Saturday[0].temp.length > 0 ? false : true}
+          disabled={Saturday[0].temp.length > 1 ? false : true}
         >
           <Line
             data={SaturdaygraphData}
@@ -318,7 +318,7 @@ function WeeklyGraphcomp({ data }) {
         <Tab
           eventKey={0}
           title={t("Sunday")}
-          disabled={Sunday[0].temp.length > 0 ? false : true}
+          disabled={Sunday[0].temp.length > 1 ? false : true}
         >
           <Line
             data={SundaygraphData}
